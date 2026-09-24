@@ -1,5 +1,8 @@
 testthat::test_that("archived DCC/ADCC comparison has frozen sample sizes and model ordering", {
-  x <- utils::read.csv("results/adcc_comparison.csv", check.names = FALSE)
+  x <- utils::read.csv(
+    testthat::test_path("..", "..", "results", "adcc_comparison.csv"),
+    check.names = FALSE
+  )
   testthat::expect_equal(nrow(x), 4L)
   testthat::expect_equal(
     x$pair,
@@ -15,7 +18,10 @@ testthat::test_that("archived DCC/ADCC comparison has frozen sample sizes and mo
 })
 
 testthat::test_that("GJR marginal robustness still does not favor ADCC", {
-  x <- utils::read.csv("results/adcc_after_gjr.csv", check.names = FALSE)
+  x <- utils::read.csv(
+    testthat::test_path("..", "..", "results", "adcc_after_gjr.csv"),
+    check.names = FALSE
+  )
   testthat::expect_equal(nrow(x), 4L)
   testthat::expect_equal(x$n, c(1683L, 1683L, 1683L, 1457L))
   testthat::expect_true(all(x$delta_AIC_adcc_minus_dcc > 0))
