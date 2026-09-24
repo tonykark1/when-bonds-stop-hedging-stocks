@@ -12,7 +12,8 @@ The repository should not be tagged `v1.0` until every blocking item is checked.
 - [x] Exact confirmatory D4 macro dates recovered: 2023-08-29 to 2026-09-15.
 - [x] Exploratory, confirmatory, mechanism and predictive layers explicitly separated.
 - [ ] Original executable source code recovered and committed.
-- [ ] Data-source manifest added with series identifiers, providers, retrieval rules and publication-time treatment.
+- [x] Provenance manifest added; known FRED identifiers, alignment rules and unresolved source gates are explicit in `DATA_SOURCES.md`.
+- [ ] Remaining unresolved providers/series IDs and Fed-expectations construction recovered.
 - [ ] Environment/package lock file recovered or rebuilt.
 
 ## Statistical credibility
@@ -32,8 +33,9 @@ The repository should not be tagged `v1.0` until every blocking item is checked.
 ## Wavelet implementation
 
 - [x] Boundary effects explicitly recognized in the specification.
+- [x] Dependency-light LA(8) effective-filter-width and conservative two-sided boundary utilities added with tests.
 - [ ] Figure-generation code demonstrably removes or flags scale-specific boundary coefficients.
-- [ ] Exact LA(8) implementation/library and boundary convention recorded from source code.
+- [ ] Exact LA(8) implementation/library and original boundary convention recovered from source code.
 - [ ] Confirm that every public figure uses the same frozen boundary rule.
 
 ## Figures
@@ -55,7 +57,8 @@ The repository should not be tagged `v1.0` until every blocking item is checked.
 - [ ] Wavelet tables can be regenerated.
 - [ ] Confirmatory tables can be regenerated.
 - [ ] Figure outputs are deterministic given frozen inputs/seeds.
-- [ ] Automated tests cover DCC correlation bounds, positive-definite matrices, no look-ahead in predictive splits, FDR family construction and wavelet boundary removal.
+- [x] Automated invariant tests cover DCC correlation bounds, positive-semidefinite correlation matrices, no look-ahead in predictive splits, BH/FDR adjustment and wavelet boundary removal.
+- [x] GitHub Actions workflow added to run the dependency-light invariant suite on pushes/PRs.
 
 ## Narrative discipline
 
@@ -69,6 +72,6 @@ The repository should not be tagged `v1.0` until every blocking item is checked.
 
 ## Release gate
 
-**Current state: research-note release candidate, not yet a reproducible-code release.**
+**Current state: research-note release candidate with a tested reproducibility scaffold, not yet a reproducible-code release.**
 
-The largest remaining blocker is not another statistical model. It is recovering the original executable analysis and converting the saved-result archive into a clean, deterministic pipeline that reproduces the frozen tables and figures.
+The largest remaining blocker is not another statistical model. It is recovering/reconstructing the actual DCC + macro-input pipeline, especially the Fed-expectations source/construction, and validating reconstructed outputs against the frozen archive.
