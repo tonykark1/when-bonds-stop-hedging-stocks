@@ -1,0 +1,31 @@
+name,provider,provider_id,frequency,units,observation_date_rule,release_timestamp_rule,revision_policy,transformation,status
+SPY,,,daily,adjusted price,market trading date,,provider convention must be frozen,log return,unresolved_provider
+QQQ,,,daily,adjusted price,market trading date,,provider convention must be frozen,log return,unresolved_provider
+IEF,,,daily,adjusted price,market trading date,,provider convention must be frozen,log return,unresolved_provider
+GLD,,,daily,adjusted price,market trading date,,provider convention must be frozen,log return,unresolved_provider
+EURUSD,,,daily,FX level,market date,,provider convention must be frozen,log return,unresolved_provider
+RateDiff,,,daily,rate differential,market date,,construction must be recovered,,unresolved_construction
+T5YIE,FRED,T5YIE,daily,percent,observation date,available observation only,FRED series as retrieved,state level / bp change,identified
+T10YIE,FRED,T10YIE,daily,percent,observation date,available observation only,FRED series as retrieved,state level / bp change,identified
+T5YIFR,FRED,T5YIFR,daily,percent,observation date,available observation only,FRED series as retrieved,state level / bp change,identified
+VIXCLS,FRED,VIXCLS,daily,index,observation date,close is contemporaneous not pre-close,FRED series as retrieved,state level / change,identified
+DCOILBRENTEU,FRED,DCOILBRENTEU,daily,USD per barrel,observation date,actual availability/alignment required,FRED series as retrieved,state level / percent return,identified
+PayrollMonthly_k,,,monthly,thousands,reference period,release timestamp required for prediction,real-time vintage rule unresolved,state level,unresolved_id
+Payroll3mAverage_k,,,monthly,thousands,reference period,release timestamp required for prediction,real-time vintage rule unresolved,3-month average,unresolved_id
+PayrollUpdate_100k,,,monthly,100k jobs,reference period,release timestamp required for prediction,real-time vintage rule unresolved,release update,unresolved_id
+Unemployment_pct,,,monthly,percent,reference period,release timestamp required for prediction,real-time vintage rule unresolved,state level,unresolved_id
+UnemploymentUpdate_pp,,,monthly,percentage points,reference period,release timestamp required for prediction,real-time vintage rule unresolved,release update,unresolved_id
+Claims_k,,,weekly,thousands,reference week,release timestamp required for prediction,revision rule unresolved,state level,unresolved_id
+Claims4wk_k,,,weekly,thousands,reference week,release timestamp required for prediction,revision rule unresolved,4-week average,unresolved_id
+GDPGrowth_annualized_pct,,,quarterly,percent annualized,reference quarter,release timestamp required for prediction,vintage rule unresolved,state level,unresolved_id
+IndustrialProduction_mom_pct,,,monthly,percent,reference month,release timestamp required for prediction,vintage rule unresolved,month-on-month change,unresolved_id
+FedLevel_90,,,daily,basis/curve units,market date,construction availability required,no backfill,curve level at 90d,blocked_source
+FedLevel_180,,,daily,basis/curve units,market date,construction availability required,no backfill,curve level at 180d,blocked_source
+FedLevel_365,,,daily,basis/curve units,market date,construction availability required,no backfill,curve level at 365d,blocked_source
+FedUncertainty_90,,,daily,basis/curve units,market date,construction availability required,no backfill,curve uncertainty at 90d,blocked_source
+FedUncertainty_180,,,daily,basis/curve units,market date,construction availability required,no backfill,curve uncertainty at 180d,blocked_source
+FedUncertainty_365,,,daily,basis/curve units,market date,construction availability required,no backfill,curve uncertainty at 365d,blocked_source
+FedSlope_365_90,,,daily,basis/curve units,market date,construction availability required,no backfill,365d minus 90d or original formula to recover,blocked_formula
+FedCurvature_90_180_365,,,daily,basis/curve units,market date,construction availability required,no backfill,original curvature formula to recover,blocked_formula
+FedRepricing,,,daily,basis points,market date,construction availability required,no backfill,original repricing formula to recover,blocked_formula
+FedCurvatureChange_bp,,,daily,basis points,market date,construction availability required,no backfill,change in recovered curvature measure,blocked_formula
