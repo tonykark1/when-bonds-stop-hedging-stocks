@@ -1,4 +1,4 @@
-source(file.path("R", "repro_utils.R"))
+source(testthat::test_path("..", "..", "R", "repro_utils.R"))
 
 testthat::test_that("Fisher transform stays finite at correlation bounds", {
   z <- fisher_z(c(-1, -0.5, 0, 0.5, 1))
@@ -58,7 +58,7 @@ testthat::test_that("DCC paths enforce bounds and date order", {
 testthat::test_that("BH adjustment is exactly one declared family", {
   p <- c(0.001, 0.01, 0.04, 0.2, 0.9)
   testthat::expect_equal(bh_adjust_family(p), stats::p.adjust(p, method = "BH"))
-  testthat::expect_error(bh_adjust_family(c(0.1, 1.1)), "[0, 1]")
+  testthat::expect_error(bh_adjust_family(c(0.1, 1.1)), "p-values")
 })
 
 testthat::test_that("expanding splits never look ahead", {
