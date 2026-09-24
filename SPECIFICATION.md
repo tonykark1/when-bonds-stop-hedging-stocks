@@ -23,9 +23,9 @@ The confirmatory target is narrower: the common SPY–IEF / QQQ–IEF Fisher-z D
 
 Primary dependence model: DCC(1,1) estimated on standardized univariate volatility-model residuals. Saved DCC-versus-ADCC robustness results use Student-t dependence likelihoods and compare DCC against an asymmetric DCC extension with asymmetry parameter `g`.
 
-The saved model-comparison sample sizes are 1,683 observations for SP500–Treasuries, Nasdaq–Treasuries and Gold–Treasuries, and 1,457 for EURUSD–rate-differential.
+The underlying daily mechanism panel spans **2020-01-03 through 2026-09-15**. The saved DCC/ADCC comparison contains 1,683 usable observations for SP500–Treasuries, Nasdaq–Treasuries and Gold–Treasuries, and 1,457 for EURUSD–rate-differential after alignment/model requirements. A saved six-variable multivariate DCC system spans 2020-01-03 through 2026-09-14, with the one-day difference reflecting alignment of the broader system.
 
-**Interpretation rule:** ADCC is retained as a robustness check, not promoted to the primary model unless it materially improves fit and changes the substantive correlation path. In the saved comparison, ADCC is not preferred by AIC/BIC for any of the four systems.
+**Interpretation rule:** ADCC is retained as a robustness check, not promoted to the primary model unless it materially improves fit and changes the substantive correlation path. In the saved comparison, ADCC is not preferred by AIC/BIC for any of the four systems. Re-estimation after GJR marginal volatility models reaches the same conclusion.
 
 ## 4. Correlation transformation
 
@@ -72,6 +72,8 @@ The exploratory screen contains 26 daily state variables and 24 shock/update/mar
 - growth/labor variables including payroll and claims measures;
 - oil/commodity variables;
 - contemporaneous market returns where used as mechanical/endogenous controls.
+
+The confirmatory D4 sample spans **2023-08-29 through 2026-09-15**. Its three equal chronological subperiods are 2023-08-29–2024-09-03, 2024-09-04–2025-09-09 and 2025-09-10–2026-09-15. The direct confirmatory models have `n=765` after wavelet/alignment requirements.
 
 Monthly Cleveland inflation-curve/risk-premia series are kept separate because only about 40 overlapping monthly DCC observations are available. NY Fed survey releases are not used for wavelet inference because the saved analysis judged them too sparse/irregular.
 
@@ -125,15 +127,23 @@ Saved direct shock variables:
 
 Inference combines HAC p-values, BH q-values, block uncertainty intervals and sign-stability checks. The confirmatory pass is a falsification layer: failure to reproduce the exploratory strength must be reported prominently.
 
-## 10. Prediction versus explanation
+## 10. Mechanism follow-up
+
+A secondary analysis conditions on negative equity standardized innovations and asks whether Treasuries also receive a negative innovation (hedge failure) or a positive innovation (flight to quality).
+
+This follow-up was run **after** the main screen and is therefore not confirmatory. Same-day shock-balance regimes may be used descriptively. Lagged-state walk-forward classification is the appropriate predictive falsification test and performs near chance, with poor log-loss relative to a base-rate forecast in the main thresholds.
+
+Therefore the release may say that the **nature of the contemporaneous shock** appears to distinguish hedge failure, but may not claim that the saved lagged macro state reliably predicts it.
+
+## 11. Prediction versus explanation
 
 Contemporaneous regressions describe conditional association. They do **not** establish forecasting ability.
 
-Prediction requires time-ordered validation in which predictors are available before the target realization and all transformations/standardization are fit without future leakage. The saved all-variable ridge exercise has approximately 18–20% in-sample D4 explanatory R² but negative time-series CV R² (about -0.093 for states and -0.034 for shocks).
+Prediction requires time-ordered validation in which predictors are available before the target realization and all transformations/standardization are fit without future leakage. The saved all-variable ridge exercise has approximately 18–20% in-sample D4 explanatory R² but negative time-series CV R² (about -0.093 for states and -0.034 for shocks). The separate lagged-state hedge-failure classifiers are also near chance out of sample.
 
 Therefore v1 makes **no validated prediction claim**.
 
-## 11. Causal-language rule
+## 12. Causal-language rule
 
 Allowed language:
 
@@ -151,21 +161,15 @@ Disallowed without a separate causal design:
 - produces
 - leads to (when meant causally)
 
-Contemporaneous return relationships are treated as potentially endogenous/mechanical.
-
-## 12. Sample-period provenance gate
-
-The saved result artifacts recover model sample sizes but **do not contain the exact start/end dates of the daily estimation sample**. Those dates must be recovered from the original aligned input/DCC-path artifact before a formal release is tagged.
-
-This is intentionally left as an explicit provenance gap rather than guessed from observation counts. No one should infer calendar dates from `n` alone.
+Contemporaneous return and same-day shock relationships are treated as potentially endogenous/mechanical.
 
 ## 13. Release claim hierarchy
 
-**Tier A — supported:** dependence varies through time and across scales; D4 contains the cleanest saved medium-frequency equity–Treasury structure; ADCC does not materially dominate DCC in the saved comparison.
+**Tier A — supported:** dependence varies through time and across scales; D4 contains the cleanest saved medium-frequency equity–Treasury structure; ADCC does not materially dominate DCC in the saved comparison, including after GJR marginals.
 
-**Tier B — suggestive:** inflation/rate pressure and risk-off pressure appear to line up with the D4 equity–Treasury dependence component in opposite directions.
+**Tier B — suggestive:** inflation/rate pressure and risk-off pressure appear to line up with the D4 equity–Treasury dependence component in opposite directions; contemporaneous shock balance sharply separates descriptive hedge-failure regimes.
 
-**Tier C — unsupported in v1:** stable macro forecasting of future stock–bond correlation; causal attribution of correlation-regime changes; a profitable trading rule.
+**Tier C — unsupported in v1:** stable macro forecasting of future stock–bond correlation or hedge failure; causal attribution of correlation-regime changes; a profitable trading rule.
 
 ## 14. Change control
 
