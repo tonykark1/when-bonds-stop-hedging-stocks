@@ -40,9 +40,20 @@ The analysis distinguishes four evidentiary layers:
 3. **Mechanism follow-up** — secondary post-screen evidence asking what distinguishes hedge failure conditional on an equity shock; explicitly not treated as pre-specified confirmation.
 4. **Prediction** — evaluated separately with time-ordered validation; negative CV R² and near-chance walk-forward classification mean the current evidence does not support a forecasting claim.
 
+## Reproducibility status
+
+The repository now contains a **tested reproducibility scaffold**, but not yet the recovered end-to-end analysis. [`DATA_SOURCES.md`](DATA_SOURCES.md) records known public-series identities and explicitly marks unresolved provenance rather than guessing it. [`R/repro_utils.R`](R/repro_utils.R) encodes invariants for correlation bounds/positive semidefiniteness, Fisher transformation, LA(8) effective filter widths, conservative boundary removal, BH adjustment and time-ordered validation. The `testthat` suite is run by GitHub Actions.
+
+Those checks make it harder for the reconstructed pipeline to silently introduce look-ahead, invalid correlation matrices or contaminated edge coefficients. They do **not** prove that the original numerical analysis has been reproduced. The principal remaining blocker is recovery/reconstruction of the DCC estimation and macro-input pipeline, especially the Fed-expectations curve source and construction.
+
 ## Repository map
 
 - [`SPECIFICATION.md`](SPECIFICATION.md) — frozen estimand, variables, transforms, horizons, inference rules, dates, and claim discipline.
+- [`DATA_SOURCES.md`](DATA_SOURCES.md) — source/provenance manifest and unresolved release gates.
+- [`ARCHIVE_MANIFEST.md`](ARCHIVE_MANIFEST.md) — inventory of surviving result bundles.
+- [`RELEASE_CHECKLIST.md`](RELEASE_CHECKLIST.md) — hard gate before a reproducible `v1.0` tag.
+- [`R/repro_utils.R`](R/repro_utils.R) — dependency-light statistical/reproducibility invariants.
+- [`tests/testthat/test-repro-utils.R`](tests/testthat/test-repro-utils.R) — automated invariant tests.
 - [`research_note/RESEARCH_NOTE.md`](research_note/RESEARCH_NOTE.md) — publication-style research note.
 - [`FIGURE_PLAN.md`](FIGURE_PLAN.md) — six static figures plus one animation, each tied to a research question.
 - [`results/adcc_comparison.csv`](results/adcc_comparison.csv) — saved DCC versus ADCC model comparison.
@@ -57,4 +68,4 @@ It does not claim that inflation, Fed expectations, VIX, or any other macro vari
 
 ## Status
 
-**Research specification frozen for the release pass.** Existing saved results are being preserved rather than re-selected after seeing outcomes. Further work should be treated as a new version or explicit robustness extension, not silently folded into the frozen specification.
+**Research specification frozen; reproducibility reconstruction in progress.** Existing saved results are being preserved rather than re-selected after seeing outcomes. Further model changes must be treated as a new version or explicit robustness extension, not silently folded into the frozen specification.
