@@ -68,6 +68,14 @@ Saved shock variables include:
 
 The economic meaning is recoverable from the names, but the underlying instrument/provider and construction formula are not yet sufficiently documented. This is the most important remaining data-provenance gap because Fed-level/curvature variables are central to the D4 narrative.
 
+### Candidate reconstruction source — not yet proven as the original
+
+The Atlanta Fed **Market Probability Tracker (MPT)** is now the leading public reconstruction candidate. The official tool estimates daily market-implied probability distributions from CME SOFR futures and options, publishes expected-rate paths and distributional uncertainty, uses the four nearest quarterly contracts, and provides downloadable historical data plus source code. That structure is unusually consistent with saved variables that contain expected Fed-policy `Level` and `Uncertainty` at 90/180/365-day horizons.
+
+This is a **hypothesis about provenance, not a recovered fact**. Before replacing the unresolved status, reconstruction must show that MPT-derived horizon means/uncertainties can reproduce the archived `FedLevel_*` and `FedUncertainty_*` values on overlapping dates. Only then should slope, curvature and repricing formulas be reverse-engineered from the saved panel.
+
+A second possible family is CME FedWatch/Fed Funds futures, but the saved uncertainty variables make a full probability-distribution source more plausible than a simple expected-rate path. Again, plausibility is not provenance.
+
 **Release rule:** no exact-reproduction claim until the raw Fed-expectations source, units, horizon interpolation and curve formulas are recovered and one reconstructed date is hand-checked end to end.
 
 ## 5. Cleveland Fed and NY Fed secondary data
@@ -87,9 +95,11 @@ The reconstructed pipeline must make the following choices explicit rather than 
 5. Missingness is never silently converted to zero unless zero has an economic meaning in that variable's construction.
 6. Every derived variable records units before and after transformation.
 
-## 7. Minimum machine-readable manifest to add before v1.0
+## 7. Machine-readable manifest
 
-A future `data/series_manifest.csv` should contain one row per raw series with at least:
+`data/series_manifest.csv` now records the known series and the unresolved gates in machine-readable form. Blank provider IDs are intentional. They are blockers to resolve, not fields to fill with a best guess.
+
+Before `v1.0`, each raw series row should contain at least:
 
 `name, provider, provider_id, frequency, units, timezone, observation_date_rule, release_timestamp_rule, revision_policy, transformation, start_date, end_date, retrieval_date`
 
